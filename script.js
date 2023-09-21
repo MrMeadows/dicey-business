@@ -2,9 +2,10 @@ $(document).ready(function () {
     class Die {
         value
         roll() {
-            return Math.floor(Math.random() * 6)
+            return Math.ceil(Math.random() * 6)
         }
     }
 
-    console.log(roll())
+    let die = new Die;
+    console.log(die.roll())
 })
