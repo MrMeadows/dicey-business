@@ -1,11 +1,19 @@
 $(document).ready(function () {
+
+    let counter = 0;
+
+    $('#divGenBtn').on('click', function() {
+        new Die;
+    })
+
     class Die {
-        value
+        constructor() {
+            $('main').append(`<div class="die" id=${counter}></div>`);
+            counter++
+        }
+
         roll() {
-            return Math.ceil(Math.random() * 6)
+            value = Math.ceil(Math.random() * 6);
         }
     }
-
-    let die = new Die;
-    console.log(die.roll())
-})
+});
