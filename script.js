@@ -9,8 +9,16 @@ $(document).ready(function () {
         return a + b;
     }
 
+    function delDieById(arr, id) {
+        const dieId = arr.findIndex((obj) => obj.id === id);
+        arr.splice(dieId, 1)
+
+        return arr;
+    }
+
     $('#divGenBtn').on('click', function() {
         new Die;
+        console.log(dieList)
     })
     
     $('#rollDiceBtn').on('click', function() {
@@ -38,7 +46,6 @@ $(document).ready(function () {
             dieList.push(this)
             dieIdList.push(this.id)
             this.destroy();
-
         }
 
         roll() {
@@ -66,14 +73,14 @@ $(document).ready(function () {
         }
 
         destroy() {
-            $('#'+this.id).on('dblclick', function () {+
+            $('#'+this.id).on('dblclick', function () {
+                console.log(this)
+
+                delDieById(dieList, this.id)
+                delDieById(dieIdList, this.id)
                 $('#'+this.id).remove()
-                console.log(dieList[this.id])
-                console.log(dieIdList[this.id])
-                dieList.splice(dieList[this.id], 1)
-                dieIdList.splice(dieIdList[this.id], 1)
+                
                 console.log(dieList)
-                console.log(dieIdList)
             })
 
         }
