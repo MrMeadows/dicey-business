@@ -9,13 +9,6 @@ $(document).ready(function () {
         return a + b;
     }
 
-    function delDieById(arr, id) {
-        const dieId = arr.findIndex((obj) => obj.id === id);
-        arr.splice(dieId, 1)
-
-        return arr;
-    }
-
     $('#divGenBtn').on('click', function() {
         new Die;
         console.log(dieList)
@@ -74,10 +67,16 @@ $(document).ready(function () {
 
         destroy() {
             $('#'+this.id).on('dblclick', function () {
-                console.log(this)
+                
 
-                delDieById(dieList, this.id)
-                delDieById(dieIdList, this.id)
+                for (let i = 0; i < dieList.length; i++) {
+
+                    if (dieList[i].id == this.id) {
+                        console.log(dieList[i].id)
+                        console.log(this.id)
+                        dieList.splice(i, 1)
+                    }
+                }
                 $('#'+this.id).remove()
                 
                 console.log(dieList)
